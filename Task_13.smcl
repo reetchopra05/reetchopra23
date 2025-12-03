@@ -1,0 +1,262 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\REET CHOPRA\OneDrive\Desktop\Stata17\Stata_Assignments\Task_13.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res} 3 Dec 2025, 23:14:13
+
+{com}. use ""C:\Users\REET CHOPRA\OneDrive\Desktop\Stata17\Stata_Assignments\DS0002\36151-0002-Data.dta"
+{err}invalid file specification
+{txt}{search r(198), local:r(198);}
+
+{com}. use "C:\Users\REET CHOPRA\OneDrive\Desktop\Stata17\Stata_Assignments\DS0002\36151-0002-Data.dta"
+{txt}(India Human Development Survey-II (IHDS-II), 2011-12, Household)
+
+{com}. tab SATOILET
+
+   {txt}EQ10 6.4 {c |}
+  Household {c |}
+has a flush {c |}
+     toilet {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+       No 0 {c |}{res}     25,049       59.67       59.67
+{txt}      Yes 1 {c |}{res}     16,929       40.33      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}     41,978      100.00
+
+{com}. sum INCOME
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 6}INCOME {c |}{res}     42,152    127759.8    216673.4   -1037040   1.14e+07
+
+{com}. sum HHEDUC
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 6}HHEDUC {c |}{res}     42,141    8.301227    5.096269          0         16
+
+{com}. sum HHEDUCM HHEDUCF
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 5}HHEDUCM {c |}{res}     39,008    7.889305    5.015836          0         16
+{txt}{space 5}HHEDUCF {c |}{res}     41,455    5.646436    5.271215          0         16
+
+{com}. tab SATOILET
+
+   {txt}EQ10 6.4 {c |}
+  Household {c |}
+has a flush {c |}
+     toilet {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+       No 0 {c |}{res}     25,049       59.67       59.67
+{txt}      Yes 1 {c |}{res}     16,929       40.33      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}     41,978      100.00
+
+{com}. logit SATOILET
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:-28306.615}  
+Iteration 1:{space 3}log likelihood = {res:-28306.615}  
+{res}
+{txt}Logistic regression{col 57}{lalign 13:Number of obs}{col 70} = {res}{ralign 6:41,978}
+{txt}{col 57}{lalign 13:LR chi2({res:0})}{col 70} = {res}{ralign 6:0.00}
+{txt}{col 57}{lalign 13:Prob > chi2}{col 70} = {res}{ralign 6:.}
+{txt}Log likelihood = {res:-28306.615}{col 57}{lalign 13:Pseudo R2}{col 70} = {res}{ralign 6:0.0000}
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}    SATOILET{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      z{col 46}   P>|z|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}_cons {c |}{col 14}{res}{space 2}-.3918058{col 26}{space 2} .0099495{col 37}{space 1}  -39.38{col 46}{space 3}0.000{col 54}{space 4}-.4113064{col 67}{space 3}-.3723052
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. logit SATOILET INCOME HHEDUC
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:-28300.526}  
+Iteration 1:{space 3}log likelihood = {res:-24666.838}  
+Iteration 2:{space 3}log likelihood = {res:-24537.485}  
+Iteration 3:{space 3}log likelihood = {res:-24536.472}  
+Iteration 4:{space 3}log likelihood = {res:-24536.472}  
+{res}
+{txt}Logistic regression{col 56}{lalign 13:Number of obs}{col 69} = {res}{ralign 7:41,970}
+{txt}{col 56}{lalign 13:LR chi2({res:2})}{col 69} = {res}{ralign 7:7528.11}
+{txt}{col 56}{lalign 13:Prob > chi2}{col 69} = {res}{ralign 7:0.0000}
+{txt}Log likelihood = {res:-24536.472}{col 56}{lalign 13:Pseudo R2}{col 69} = {res}{ralign 7:0.1330}
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}    SATOILET{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      z{col 46}   P>|z|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 6}INCOME {c |}{col 14}{res}{space 2} 2.65e-06{col 26}{space 2} 9.65e-08{col 37}{space 1}   27.45{col 46}{space 3}0.000{col 54}{space 4} 2.46e-06{col 67}{space 3} 2.84e-06
+{txt}{space 6}HHEDUC {c |}{col 14}{res}{space 2}  .146093{col 26}{space 2} .0025589{col 37}{space 1}   57.09{col 46}{space 3}0.000{col 54}{space 4} .1410776{col 67}{space 3} .1511083
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-1.992118{col 26}{space 2} .0247346{col 37}{space 1}  -80.54{col 46}{space 3}0.000{col 54}{space 4}-2.040597{col 67}{space 3}-1.943639
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: 0 failures and 5 successes completely determined.{p_end}
+
+{com}. gen log_income=ln(INCOME)
+{txt}(618 missing values generated)
+
+{com}. logit SATOILET INCOME HHEDUC
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:-28300.526}  
+Iteration 1:{space 3}log likelihood = {res:-24666.838}  
+Iteration 2:{space 3}log likelihood = {res:-24537.485}  
+Iteration 3:{space 3}log likelihood = {res:-24536.472}  
+Iteration 4:{space 3}log likelihood = {res:-24536.472}  
+{res}
+{txt}Logistic regression{col 56}{lalign 13:Number of obs}{col 69} = {res}{ralign 7:41,970}
+{txt}{col 56}{lalign 13:LR chi2({res:2})}{col 69} = {res}{ralign 7:7528.11}
+{txt}{col 56}{lalign 13:Prob > chi2}{col 69} = {res}{ralign 7:0.0000}
+{txt}Log likelihood = {res:-24536.472}{col 56}{lalign 13:Pseudo R2}{col 69} = {res}{ralign 7:0.1330}
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}    SATOILET{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      z{col 46}   P>|z|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 6}INCOME {c |}{col 14}{res}{space 2} 2.65e-06{col 26}{space 2} 9.65e-08{col 37}{space 1}   27.45{col 46}{space 3}0.000{col 54}{space 4} 2.46e-06{col 67}{space 3} 2.84e-06
+{txt}{space 6}HHEDUC {c |}{col 14}{res}{space 2}  .146093{col 26}{space 2} .0025589{col 37}{space 1}   57.09{col 46}{space 3}0.000{col 54}{space 4} .1410776{col 67}{space 3} .1511083
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-1.992118{col 26}{space 2} .0247346{col 37}{space 1}  -80.54{col 46}{space 3}0.000{col 54}{space 4}-2.040597{col 67}{space 3}-1.943639
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: 0 failures and 5 successes completely determined.{p_end}
+
+{com}. logit SATOILET log_income HHEDUC
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:-27902.714}  
+Iteration 1:{space 3}log likelihood = {res:-23911.959}  
+Iteration 2:{space 3}log likelihood = {res:-23868.485}  
+Iteration 3:{space 3}log likelihood = {res: -23868.42}  
+Iteration 4:{space 3}log likelihood = {res: -23868.42}  
+{res}
+{txt}Logistic regression{col 56}{lalign 13:Number of obs}{col 69} = {res}{ralign 7:41,365}
+{txt}{col 56}{lalign 13:LR chi2({res:2})}{col 69} = {res}{ralign 7:8068.59}
+{txt}{col 56}{lalign 13:Prob > chi2}{col 69} = {res}{ralign 7:0.0000}
+{txt}Log likelihood = {res:-23868.42}{col 56}{lalign 13:Pseudo R2}{col 69} = {res}{ralign 7:0.1446}
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}    SATOILET{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      z{col 46}   P>|z|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}log_income {c |}{col 14}{res}{space 2} .4921603{col 26}{space 2} .0128311{col 37}{space 1}   38.36{col 46}{space 3}0.000{col 54}{space 4} .4670117{col 67}{space 3} .5173088
+{txt}{space 6}HHEDUC {c |}{col 14}{res}{space 2} .1340103{col 26}{space 2}  .002616{col 37}{space 1}   51.23{col 46}{space 3}0.000{col 54}{space 4}  .128883{col 67}{space 3} .1391375
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-7.123234{col 26}{space 2} .1394193{col 37}{space 1}  -51.09{col 46}{space 3}0.000{col 54}{space 4}-7.396491{col 67}{space 3}-6.849978
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. logistic SATOILET log_income HHEDUC
+{res}
+{txt}Logistic regression{col 56}{lalign 13:Number of obs}{col 69} = {res}{ralign 7:41,365}
+{txt}{col 56}{lalign 13:LR chi2({res:2})}{col 69} = {res}{ralign 7:8068.59}
+{txt}{col 56}{lalign 13:Prob > chi2}{col 69} = {res}{ralign 7:0.0000}
+{txt}Log likelihood = {res:-23868.42}{col 56}{lalign 13:Pseudo R2}{col 69} = {res}{ralign 7:0.1446}
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}    SATOILET{col 14}{c |} Odds ratio{col 26}   Std. err.{col 38}      z{col 46}   P>|z|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}log_income {c |}{col 14}{res}{space 2} 1.635846{col 26}{space 2} .0209898{col 37}{space 1}   38.36{col 46}{space 3}0.000{col 54}{space 4}  1.59522{col 67}{space 3} 1.677507
+{txt}{space 6}HHEDUC {c |}{col 14}{res}{space 2} 1.143405{col 26}{space 2} .0029911{col 37}{space 1}   51.23{col 46}{space 3}0.000{col 54}{space 4} 1.137557{col 67}{space 3} 1.149282
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} .0008062{col 26}{space 2} .0001124{col 37}{space 1}  -51.09{col 46}{space 3}0.000{col 54}{space 4} .0006134{col 67}{space 3} .0010595
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: {bf:_cons} estimates baseline odds{txt}.{p_end}
+
+{com}. logistic SATOILET log_income HHEDUCM HHEDUCF
+{res}
+{txt}Logistic regression{col 56}{lalign 13:Number of obs}{col 69} = {res}{ralign 7:37,662}
+{txt}{col 56}{lalign 13:LR chi2({res:3})}{col 69} = {res}{ralign 7:8357.30}
+{txt}{col 56}{lalign 13:Prob > chi2}{col 69} = {res}{ralign 7:0.0000}
+{txt}Log likelihood = {res:-21349.953}{col 56}{lalign 13:Pseudo R2}{col 69} = {res}{ralign 7:0.1637}
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}    SATOILET{col 14}{c |} Odds ratio{col 26}   Std. err.{col 38}      z{col 46}   P>|z|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}log_income {c |}{col 14}{res}{space 2} 1.585949{col 26}{space 2} .0219288{col 37}{space 1}   33.35{col 46}{space 3}0.000{col 54}{space 4} 1.543547{col 67}{space 3} 1.629517
+{txt}{space 5}HHEDUCM {c |}{col 14}{res}{space 2} 1.061914{col 26}{space 2} .0031742{col 37}{space 1}   20.10{col 46}{space 3}0.000{col 54}{space 4} 1.055711{col 67}{space 3} 1.068154
+{txt}{space 5}HHEDUCF {c |}{col 14}{res}{space 2} 1.115014{col 26}{space 2} .0030534{col 37}{space 1}   39.76{col 46}{space 3}0.000{col 54}{space 4} 1.109045{col 67}{space 3} 1.121014
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} .0011841{col 26}{space 2} .0001791{col 37}{space 1}  -44.56{col 46}{space 3}0.000{col 54}{space 4} .0008804{col 67}{space 3} .0015927
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: {bf:_cons} estimates baseline odds{txt}.{p_end}
+
+{com}. tab HQFLOOR
+
+  {txt}EQ35 23.6 {c |}
+ Floor: not {c |}
+  mud, wood {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+   kutcha 0 {c |}{res}     14,732       35.44       35.44
+{txt}    pucca 1 {c |}{res}     26,842       64.56      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}     41,574      100.00
+
+{com}. logistic SATOILET log_income HQFLOOR
+{res}
+{txt}Logistic regression{col 56}{lalign 13:Number of obs}{col 69} = {res}{ralign 7:40,949}
+{txt}{col 56}{lalign 13:LR chi2({res:2})}{col 69} = {res}{ralign 7:9491.09}
+{txt}{col 56}{lalign 13:Prob > chi2}{col 69} = {res}{ralign 7:0.0000}
+{txt}Log likelihood = {res:-22877.339}{col 56}{lalign 13:Pseudo R2}{col 69} = {res}{ralign 7:0.1718}
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}    SATOILET{col 14}{c |} Odds ratio{col 26}   Std. err.{col 38}      z{col 46}   P>|z|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}log_income {c |}{col 14}{res}{space 2} 1.709733{col 26}{space 2} .0213322{col 37}{space 1}   42.99{col 46}{space 3}0.000{col 54}{space 4}  1.66843{col 67}{space 3} 1.752059
+{txt}{space 5}HQFLOOR {c |}{col 14}{res}{space 2} 5.630687{col 26}{space 2} .1599774{col 37}{space 1}   60.83{col 46}{space 3}0.000{col 54}{space 4} 5.325708{col 67}{space 3} 5.953132
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} .0004594{col 26}{space 2} .0000641{col 37}{space 1}  -55.13{col 46}{space 3}0.000{col 54}{space 4} .0003496{col 67}{space 3} .0006038
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: {bf:_cons} estimates baseline odds{txt}.{p_end}
+
+{com}. tab HQFLOOR
+
+  {txt}EQ35 23.6 {c |}
+ Floor: not {c |}
+  mud, wood {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+   kutcha 0 {c |}{res}     14,732       35.44       35.44
+{txt}    pucca 1 {c |}{res}     26,842       64.56      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}     41,574      100.00
+
+{com}. logistic HQFLOOR log_income HHEDUC FM39B
+{res}
+{txt}Logistic regression{col 56}{lalign 13:Number of obs}{col 69} = {res}{ralign 7:15,888}
+{txt}{col 56}{lalign 13:LR chi2({res:3})}{col 69} = {res}{ralign 7:2776.26}
+{txt}{col 56}{lalign 13:Prob > chi2}{col 69} = {res}{ralign 7:0.0000}
+{txt}Log likelihood = {res:-9606.3101}{col 56}{lalign 13:Pseudo R2}{col 69} = {res}{ralign 7:0.1263}
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}     HQFLOOR{col 14}{c |} Odds ratio{col 26}   Std. err.{col 38}      z{col 46}   P>|z|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}log_income {c |}{col 14}{res}{space 2} 1.795358{col 26}{space 2} .0340256{col 37}{space 1}   30.88{col 46}{space 3}0.000{col 54}{space 4} 1.729892{col 67}{space 3} 1.863301
+{txt}{space 6}HHEDUC {c |}{col 14}{res}{space 2}  1.10887{col 26}{space 2} .0042772{col 37}{space 1}   26.79{col 46}{space 3}0.000{col 54}{space 4} 1.100518{col 67}{space 3} 1.117285
+{txt}{space 7}FM39B {c |}{col 14}{res}{space 2} 1.058001{col 26}{space 2} .0182399{col 37}{space 1}    3.27{col 46}{space 3}0.001{col 54}{space 4} 1.022848{col 67}{space 3} 1.094361
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} .0006776{col 26}{space 2} .0001411{col 37}{space 1}  -35.05{col 46}{space 3}0.000{col 54}{space 4} .0004505{col 67}{space 3}  .001019
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: {bf:_cons} estimates baseline odds{txt}.{p_end}
+
+{com}. logistic HQFLOOR log_income ASSETS HHEDUC i.FM39B
+{res}
+{txt}Logistic regression{col 56}{lalign 13:Number of obs}{col 69} = {res}{ralign 7:15,887}
+{txt}{col 56}{lalign 13:LR chi2({res:8})}{col 69} = {res}{ralign 7:8636.56}
+{txt}{col 56}{lalign 13:Prob > chi2}{col 69} = {res}{ralign 7:0.0000}
+{txt}Log likelihood = {res:-6675.4216}{col 56}{lalign 13:Pseudo R2}{col 69} = {res}{ralign 7:0.3928}
+
+{txt}{hline 36}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                            HQFLOOR{col 37}{c |} Odds ratio{col 49}   Std. err.{col 61}      z{col 69}   P>|z|{col 77}     [95% con{col 90}f. interval]
+{hline 36}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 25}log_income {c |}{col 37}{res}{space 2} .9520175{col 49}{space 2} .0230614{col 60}{space 1}   -2.03{col 69}{space 3}0.042{col 77}{space 4} .9078742{col 90}{space 3} .9983072
+{txt}{space 29}ASSETS {c |}{col 37}{res}{space 2}  1.45458{col 49}{space 2} .0092756{col 60}{space 1}   58.76{col 69}{space 3}0.000{col 77}{space 4} 1.436513{col 90}{space 3} 1.472874
+{txt}{space 29}HHEDUC {c |}{col 37}{res}{space 2} .9544757{col 49}{space 2} .0049931{col 60}{space 1}   -8.91{col 69}{space 3}0.000{col 77}{space 4} .9447394{col 90}{space 3} .9643123
+{txt}{space 35} {c |}
+{space 30}FM39B {c |}
+Inherited/Gifted to female members  {c |}{col 37}{res}{space 2} 1.375028{col 49}{space 2} .2104176{col 60}{space 1}    2.08{col 69}{space 3}0.037{col 77}{space 4} 1.018718{col 90}{space 3} 1.855962
+{txt}{space 13}Undivided family land  {c |}{col 37}{res}{space 2}  1.73542{col 49}{space 2} .1511563{col 60}{space 1}    6.33{col 69}{space 3}0.000{col 77}{space 4} 1.463068{col 90}{space 3} 2.058472
+{txt}{space 25}Purchased  {c |}{col 37}{res}{space 2}  1.18598{col 49}{space 2} .1510136{col 60}{space 1}    1.34{col 69}{space 3}0.180{col 77}{space 4} .9240424{col 90}{space 3} 1.522169
+{txt}{space 5}Received from govt./Panchayat  {c |}{col 37}{res}{space 2} 1.100517{col 49}{space 2}  .186994{col 60}{space 1}    0.56{col 69}{space 3}0.573{col 77}{space 4} .7887964{col 90}{space 3} 1.535424
+{txt}{space 29}Other  {c |}{col 37}{res}{space 2} .6367265{col 49}{space 2} .1323575{col 60}{space 1}   -2.17{col 69}{space 3}0.030{col 77}{space 4} .4236548{col 90}{space 3}   .95696
+{txt}{space 35} {c |}
+{space 30}_cons {c |}{col 37}{res}{space 2} .0164245{col 49}{space 2} .0040711{col 60}{space 1}  -16.58{col 69}{space 3}0.000{col 77}{space 4} .0101043{col 90}{space 3} .0266978
+{txt}{hline 36}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: {bf:_cons} estimates baseline odds{txt}.{p_end}
+
+{com}. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\REET CHOPRA\OneDrive\Desktop\Stata17\Stata_Assignments\Task_13.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res} 3 Dec 2025, 23:21:06
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

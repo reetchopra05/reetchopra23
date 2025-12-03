@@ -1,0 +1,354 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\REET CHOPRA\OneDrive\Desktop\Stata_Assignments\Task_2.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}31 Aug 2025, 01:07:35
+
+{com}. sysuse auto
+{txt}(1978 automobile data)
+
+{com}. br
+
+. describe
+
+{txt}Contains data from {res}C:\Users\REET CHOPRA\OneDrive\Desktop\Stata17\ado\base/a/auto.dta
+{txt} Observations:{res}            74                  1978
+                                                automobile
+                                                data
+{txt}    Variables:{res}            12                  13 Apr 2020 17:45
+                                              (_dta has notes)
+{txt}{hline}
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+{hline}
+{p 0 48}{res}{bind:make           }{txt}{bind: str18   }{bind:{txt}%-18s     }{space 1}{bind:         }{bind:  }{res}{res}Make and model{p_end}
+{p 0 48}{bind:price          }{txt}{bind: int     }{bind:{txt}%8.0gc    }{space 1}{bind:         }{bind:  }{res}{res}Price{p_end}
+{p 0 48}{bind:mpg            }{txt}{bind: int     }{bind:{txt}%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Mileage (mpg){p_end}
+{p 0 48}{bind:rep78          }{txt}{bind: int     }{bind:{txt}%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Repair record 1978{p_end}
+{p 0 48}{bind:headroom       }{txt}{bind: float   }{bind:{txt}%6.1f     }{space 1}{bind:         }{bind:  }{res}{res}Headroom (in.){p_end}
+{p 0 48}{bind:trunk          }{txt}{bind: int     }{bind:{txt}%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Trunk space (cu. ft.){p_end}
+{p 0 48}{bind:weight         }{txt}{bind: int     }{bind:{txt}%8.0gc    }{space 1}{bind:         }{bind:  }{res}{res}Weight (lbs.){p_end}
+{p 0 48}{bind:length         }{txt}{bind: int     }{bind:{txt}%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Length (in.){p_end}
+{p 0 48}{bind:turn           }{txt}{bind: int     }{bind:{txt}%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Turn circle (ft.){p_end}
+{p 0 48}{bind:displacement   }{txt}{bind: int     }{bind:{txt}%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Displacement (cu. in.){p_end}
+{p 0 48}{bind:gear_ratio     }{txt}{bind: float   }{bind:{txt}%6.2f     }{space 1}{bind:         }{bind:  }{res}{res}Gear ratio{p_end}
+{p 0 48}{bind:foreign        }{txt}{bind: byte    }{bind:{txt}%8.0g     }{space 1}{bind:origin   }{bind:  }{res}{res}Car origin{p_end}
+{txt}{hline}
+Sorted by: {res}foreign
+
+{com}. tab foreign
+
+ {txt}Car origin {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+   Domestic {c |}{res}         52       70.27       70.27
+{txt}    Foreign {c |}{res}         22       29.73      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}         74      100.00
+
+{com}. tab foreign, nolabel
+
+ {txt}Car origin {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          0 {c |}{res}         52       70.27       70.27
+{txt}          1 {c |}{res}         22       29.73      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}         74      100.00
+
+{com}. reg price mpg
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}        74
+{txt}{hline 13}{c +}{hline 34}   F(1, 72)        = {res}    20.26
+{txt}       Model {c |} {res}  139449474         1   139449474   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res}  495615923        72  6883554.48   {txt}R-squared       ={res}    0.2196
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.2087
+{txt}       Total {c |} {res}  635065396        73  8699525.97   {txt}Root MSE        =   {res} 2623.7
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       price{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}mpg {c |}{col 14}{res}{space 2}-238.8943{col 26}{space 2} 53.07669{col 37}{space 1}   -4.50{col 46}{space 3}0.000{col 54}{space 4}-344.7008{col 67}{space 3}-133.0879
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 11253.06{col 26}{space 2} 1170.813{col 37}{space 1}    9.61{col 46}{space 3}0.000{col 54}{space 4} 8919.088{col 67}{space 3} 13587.03
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. reg price mpg
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}        74
+{txt}{hline 13}{c +}{hline 34}   F(1, 72)        = {res}    20.26
+{txt}       Model {c |} {res}  139449474         1   139449474   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res}  495615923        72  6883554.48   {txt}R-squared       ={res}    0.2196
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.2087
+{txt}       Total {c |} {res}  635065396        73  8699525.97   {txt}Root MSE        =   {res} 2623.7
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       price{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}mpg {c |}{col 14}{res}{space 2}-238.8943{col 26}{space 2} 53.07669{col 37}{space 1}   -4.50{col 46}{space 3}0.000{col 54}{space 4}-344.7008{col 67}{space 3}-133.0879
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 11253.06{col 26}{space 2} 1170.813{col 37}{space 1}    9.61{col 46}{space 3}0.000{col 54}{space 4} 8919.088{col 67}{space 3} 13587.03
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. reg price i.foreign
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}        74
+{txt}{hline 13}{c +}{hline 34}   F(1, 72)        = {res}     0.17
+{txt}       Model {c |} {res} 1507382.66         1  1507382.66   {txt}Prob > F        ={res}    0.6802
+{txt}    Residual {c |} {res}  633558013        72  8799416.85   {txt}R-squared       ={res}    0.0024
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0115
+{txt}       Total {c |} {res}  635065396        73  8699525.97   {txt}Root MSE        =   {res} 2966.4
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       price{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 5}foreign {c |}
+{space 4}Foreign  {c |}{col 14}{res}{space 2} 312.2587{col 26}{space 2} 754.4488{col 37}{space 1}    0.41{col 46}{space 3}0.680{col 54}{space 4}-1191.708{col 67}{space 3} 1816.225
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 6072.423{col 26}{space 2}  411.363{col 37}{space 1}   14.76{col 46}{space 3}0.000{col 54}{space 4} 5252.386{col 67}{space 3}  6892.46
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. reg price i.foreign mpg
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}        74
+{txt}{hline 13}{c +}{hline 34}   F(2, 71)        = {res}    14.07
+{txt}       Model {c |} {res}  180261702         2  90130850.8   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res}  454803695        71  6405685.84   {txt}R-squared       ={res}    0.2838
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.2637
+{txt}       Total {c |} {res}  635065396        73  8699525.97   {txt}Root MSE        =   {res} 2530.9
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       price{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 5}foreign {c |}
+{space 4}Foreign  {c |}{col 14}{res}{space 2} 1767.292{col 26}{space 2}  700.158{col 37}{space 1}    2.52{col 46}{space 3}0.014{col 54}{space 4} 371.2169{col 67}{space 3} 3163.368
+{txt}{space 9}mpg {c |}{col 14}{res}{space 2}-294.1955{col 26}{space 2} 55.69172{col 37}{space 1}   -5.28{col 46}{space 3}0.000{col 54}{space 4}-405.2417{col 67}{space 3}-183.1494
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 11905.42{col 26}{space 2} 1158.634{col 37}{space 1}   10.28{col 46}{space 3}0.000{col 54}{space 4} 9595.164{col 67}{space 3} 14215.67
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. reg price i.foreign mpg i.foreign#c.mpg
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}        74
+{txt}{hline 13}{c +}{hline 34}   F(3, 70)        = {res}     9.48
+{txt}       Model {c |} {res}  183435281         3  61145093.6   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res}  451630115        70  6451858.79   {txt}R-squared       ={res}    0.2888
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.2584
+{txt}       Total {c |} {res}  635065396        73  8699525.97   {txt}Root MSE        =   {res} 2540.1
+
+{txt}{hline 14}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        price{col 15}{c |} Coefficient{col 27}  Std. err.{col 39}      t{col 47}   P>|t|{col 55}     [95% con{col 68}f. interval]
+{hline 14}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 6}foreign {c |}
+{space 5}Foreign  {c |}{col 15}{res}{space 2}-13.58741{col 27}{space 2} 2634.664{col 38}{space 1}   -0.01{col 47}{space 3}0.996{col 55}{space 4}-5268.258{col 68}{space 3} 5241.084
+{txt}{space 10}mpg {c |}{col 15}{res}{space 2}-329.2551{col 27}{space 2} 74.98545{col 38}{space 1}   -4.39{col 47}{space 3}0.000{col 55}{space 4}-478.8088{col 68}{space 3}-179.7013
+{txt}{space 13} {c |}
+foreign#c.mpg {c |}
+{space 5}Foreign  {c |}{col 15}{res}{space 2} 78.88826{col 27}{space 2} 112.4812{col 38}{space 1}    0.70{col 47}{space 3}0.485{col 55}{space 4}-145.4485{col 68}{space 3}  303.225
+{txt}{space 13} {c |}
+{space 8}_cons {c |}{col 15}{res}{space 2} 12600.54{col 27}{space 2} 1527.888{col 38}{space 1}    8.25{col 47}{space 3}0.000{col 55}{space 4} 9553.261{col 68}{space 3} 15647.81
+{txt}{hline 14}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. avplots
+{res}
+{com}. clear
+
+. sysuse nlsw88
+{txt}(NLSW, 1988 extract)
+
+{com}. describe
+
+{txt}Contains data from {res}C:\Users\REET CHOPRA\OneDrive\Desktop\Stata17\ado\base/n/nlsw88.dta
+{txt} Observations:{res}         2,246                  NLSW, 1988 extract
+{txt}    Variables:{res}            18                  31 Aug 2025 01:05
+                                              (_dta has notes)
+{txt}{hline}
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+{hline}
+{p 0 48}{res}{bind:idcode         }{txt}{bind: int     }{bind:{txt}%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}NLS ID{p_end}
+{p 0 48}{bind:age            }{txt}{bind: byte    }{bind:{txt}%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Age in current year{p_end}
+{p 0 48}{bind:race           }{txt}{bind: byte    }{bind:{txt}%8.0g     }{space 1}{bind:racelbl  }{bind:  }{res}{res}Race{p_end}
+{p 0 48}{bind:married        }{txt}{bind: byte    }{bind:{txt}%8.0g     }{space 1}{bind:marlbl   }{bind:  }{res}{res}Married{p_end}
+{p 0 48}{bind:never_married  }{txt}{bind: byte    }{bind:{txt}%16.0g    }{space 1}{bind:nev_mar  }{bind:  }{res}{res}Never married{p_end}
+{p 0 48}{bind:grade          }{txt}{bind: byte    }{bind:{txt}%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Current grade completed{p_end}
+{p 0 48}{bind:collgrad       }{txt}{bind: byte    }{bind:{txt}%16.0g    }{space 1}{bind:gradlbl  }{bind:  }{res}{res}College graduate{p_end}
+{p 0 48}{bind:south          }{txt}{bind: byte    }{bind:{txt}%9.0g     }{space 1}{bind:southlbl }{bind:  }{res}{res}Lives in the south{p_end}
+{p 0 48}{bind:smsa           }{txt}{bind: byte    }{bind:{txt}%9.0g     }{space 1}{bind:smsalbl  }{bind:  }{res}{res}Lives in SMSA{p_end}
+{p 0 48}{bind:c_city         }{txt}{bind: byte    }{bind:{txt}%16.0g    }{space 1}{bind:ccitylbl }{bind:  }{res}{res}Lives in a central city{p_end}
+{p 0 48}{bind:industry       }{txt}{bind: byte    }{bind:{txt}%23.0g    }{space 1}{bind:indlbl   }{bind:  }{res}{res}Industry{p_end}
+{p 0 48}{bind:occupation     }{txt}{bind: byte    }{bind:{txt}%22.0g    }{space 1}{bind:occlbl   }{bind:  }{res}{res}Occupation{p_end}
+{p 0 48}{bind:union          }{txt}{bind: byte    }{bind:{txt}%8.0g     }{space 1}{bind:unionlbl }{bind:  }{res}{res}Union worker{p_end}
+{p 0 48}{bind:wage           }{txt}{bind: float   }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}Hourly wage{p_end}
+{p 0 48}{bind:hours          }{txt}{bind: byte    }{bind:{txt}%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Usual hours worked{p_end}
+{p 0 48}{bind:ttl_exp        }{txt}{bind: float   }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}Total work experience (years){p_end}
+{p 0 48}{bind:tenure         }{txt}{bind: float   }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}Job tenure (years){p_end}
+{p 0 48}{bind:race1          }{txt}{bind: float   }{bind:{txt}%9.0g     }{space 1}{bind:today    }{bind:  }{res}{res}{p_end}
+{txt}{hline}
+Sorted by: {res}idcode
+
+{com}. br
+
+. tab race
+
+       {txt}Race {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+      White {c |}{res}      1,637       72.89       72.89
+{txt}      Black {c |}{res}        583       25.96       98.84
+{txt}      Other {c |}{res}         26        1.16      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}      2,246      100.00
+
+{com}. tab race, nolabel
+
+       {txt}Race {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          1 {c |}{res}      1,637       72.89       72.89
+{txt}          2 {c |}{res}        583       25.96       98.84
+{txt}          3 {c |}{res}         26        1.16      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}      2,246      100.00
+
+{com}. reg wage ttl_exp
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     2,246
+{txt}{hline 13}{c +}{hline 34}   F(1, 2244)      = {res}   170.14
+{txt}       Model {c |} {res} 5241.29609         1  5241.29609   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 69126.6713     2,244   30.805112   {txt}R-squared       ={res}    0.0705
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0701
+{txt}       Total {c |} {res} 74367.9674     2,245  33.1260434   {txt}Root MSE        =   {res} 5.5502
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        wage{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 5}ttl_exp {c |}{col 14}{res}{space 2} .3314291{col 26}{space 2} .0254087{col 37}{space 1}   13.04{col 46}{space 3}0.000{col 54}{space 4} .2816021{col 67}{space 3} .3812562
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 3.612492{col 26}{space 2} .3393469{col 37}{space 1}   10.65{col 46}{space 3}0.000{col 54}{space 4} 2.947026{col 67}{space 3} 4.277959
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. reg wage ttl_exp i.race i.race#c.ttl_exp
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     2,246
+{txt}{hline 13}{c +}{hline 34}   F(5, 2240)      = {res}    39.59
+{txt}       Model {c |} {res} 6038.33107         5  1207.66621   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 68329.6363     2,240  30.5043019   {txt}R-squared       ={res}    0.0812
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0791
+{txt}       Total {c |} {res} 74367.9674     2,245  33.1260434   {txt}Root MSE        =   {res} 5.5231
+
+{txt}{hline 15}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}          wage{col 16}{c |} Coefficient{col 28}  Std. err.{col 40}      t{col 48}   P>|t|{col 56}     [95% con{col 69}f. interval]
+{hline 15}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}ttl_exp {c |}{col 16}{res}{space 2} .3495325{col 28}{space 2} .0295591{col 39}{space 1}   11.82{col 48}{space 3}0.000{col 56}{space 4} .2915665{col 69}{space 3} .4074986
+{txt}{space 14} {c |}
+{space 10}race {c |}
+{space 8}Black  {c |}{col 16}{res}{space 2} -.580377{col 28}{space 2} .7863869{col 39}{space 1}   -0.74{col 48}{space 3}0.461{col 56}{space 4}  -2.1225{col 69}{space 3} .9617463
+{txt}{space 8}Other  {c |}{col 16}{res}{space 2}  .739491{col 28}{space 2} 2.734091{col 39}{space 1}    0.27{col 48}{space 3}0.787{col 56}{space 4}-4.622126{col 69}{space 3} 6.101108
+{txt}{space 14} {c |}
+race#c.ttl_exp {c |}
+{space 8}Black  {c |}{col 16}{res}{space 2}-.0586141{col 28}{space 2} .0584658{col 39}{space 1}   -1.00{col 48}{space 3}0.316{col 56}{space 4}-.1732669{col 69}{space 3} .0560387
+{txt}{space 8}Other  {c |}{col 16}{res}{space 2}-.0251754{col 28}{space 2} .1990087{col 39}{space 1}   -0.13{col 48}{space 3}0.899{col 56}{space 4}-.4154361{col 69}{space 3} .3650854
+{txt}{space 14} {c |}
+{space 9}_cons {c |}{col 16}{res}{space 2} 3.724838{col 28}{space 2} .3930264{col 39}{space 1}    9.48{col 48}{space 3}0.000{col 56}{space 4} 2.954104{col 69}{space 3} 4.495572
+{txt}{hline 15}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. reg wage ttl_exp ib2.race i.race#c.ttl_exp
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     2,246
+{txt}{hline 13}{c +}{hline 34}   F(5, 2240)      = {res}    39.59
+{txt}       Model {c |} {res} 6038.33107         5  1207.66621   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 68329.6363     2,240  30.5043019   {txt}R-squared       ={res}    0.0812
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0791
+{txt}       Total {c |} {res} 74367.9674     2,245  33.1260434   {txt}Root MSE        =   {res} 5.5231
+
+{txt}{hline 15}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}          wage{col 16}{c |} Coefficient{col 28}  Std. err.{col 40}      t{col 48}   P>|t|{col 56}     [95% con{col 69}f. interval]
+{hline 15}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}ttl_exp {c |}{col 16}{res}{space 2} .2909184{col 28}{space 2} .0504431{col 39}{space 1}    5.77{col 48}{space 3}0.000{col 56}{space 4} .1919983{col 69}{space 3} .3898386
+{txt}{space 14} {c |}
+{space 10}race {c |}
+{space 8}White  {c |}{col 16}{res}{space 2}  .580377{col 28}{space 2} .7863869{col 39}{space 1}    0.74{col 48}{space 3}0.461{col 56}{space 4}-.9617463{col 69}{space 3}   2.1225
+{txt}{space 8}Other  {c |}{col 16}{res}{space 2} 1.319868{col 28}{space 2} 2.790111{col 39}{space 1}    0.47{col 48}{space 3}0.636{col 56}{space 4}-4.151606{col 69}{space 3} 6.791341
+{txt}{space 14} {c |}
+race#c.ttl_exp {c |}
+{space 8}White  {c |}{col 16}{res}{space 2} .0586141{col 28}{space 2} .0584658{col 39}{space 1}    1.00{col 48}{space 3}0.316{col 56}{space 4}-.0560387{col 69}{space 3} .1732669
+{txt}{space 8}Other  {c |}{col 16}{res}{space 2} .0334387{col 28}{space 2} .2031631{col 39}{space 1}    0.16{col 48}{space 3}0.869{col 56}{space 4}-.3649688{col 69}{space 3} .4318463
+{txt}{space 14} {c |}
+{space 9}_cons {c |}{col 16}{res}{space 2} 3.144461{col 28}{space 2} .6811275{col 39}{space 1}    4.62{col 48}{space 3}0.000{col 56}{space 4} 1.808754{col 69}{space 3} 4.480168
+{txt}{hline 15}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. reg wage ttl_exp ib3.race i.race#c.ttl_exp
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     2,246
+{txt}{hline 13}{c +}{hline 34}   F(5, 2240)      = {res}    39.59
+{txt}       Model {c |} {res} 6038.33107         5  1207.66621   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 68329.6363     2,240  30.5043019   {txt}R-squared       ={res}    0.0812
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0791
+{txt}       Total {c |} {res} 74367.9674     2,245  33.1260434   {txt}Root MSE        =   {res} 5.5231
+
+{txt}{hline 15}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}          wage{col 16}{c |} Coefficient{col 28}  Std. err.{col 40}      t{col 48}   P>|t|{col 56}     [95% con{col 69}f. interval]
+{hline 15}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}ttl_exp {c |}{col 16}{res}{space 2} .3243572{col 28}{space 2} .1968012{col 39}{space 1}    1.65{col 48}{space 3}0.099{col 56}{space 4}-.0615747{col 69}{space 3}  .710289
+{txt}{space 14} {c |}
+{space 10}race {c |}
+{space 8}White  {c |}{col 16}{res}{space 2} -.739491{col 28}{space 2} 2.734091{col 39}{space 1}   -0.27{col 48}{space 3}0.787{col 56}{space 4}-6.101108{col 69}{space 3} 4.622126
+{txt}{space 8}Black  {c |}{col 16}{res}{space 2}-1.319868{col 28}{space 2} 2.790111{col 39}{space 1}   -0.47{col 48}{space 3}0.636{col 56}{space 4}-6.791341{col 69}{space 3} 4.151606
+{txt}{space 14} {c |}
+race#c.ttl_exp {c |}
+{space 8}White  {c |}{col 16}{res}{space 2} .0251754{col 28}{space 2} .1990087{col 39}{space 1}    0.13{col 48}{space 3}0.899{col 56}{space 4}-.3650854{col 69}{space 3} .4154361
+{txt}{space 8}Black  {c |}{col 16}{res}{space 2}-.0334387{col 28}{space 2} .2031631{col 39}{space 1}   -0.16{col 48}{space 3}0.869{col 56}{space 4}-.4318463{col 69}{space 3} .3649688
+{txt}{space 14} {c |}
+{space 9}_cons {c |}{col 16}{res}{space 2} 4.464329{col 28}{space 2} 2.705695{col 39}{space 1}    1.65{col 48}{space 3}0.099{col 56}{space 4}-.8416026{col 69}{space 3}  9.77026
+{txt}{hline 15}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. reg wage i.race i.c_city
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     2,246
+{txt}{hline 13}{c +}{hline 34}   F(3, 2242)      = {res}    10.84
+{txt}       Model {c |} {res}  1063.1109         3  354.370299   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 73304.8565     2,242  32.6961893   {txt}R-squared       ={res}    0.0143
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0130
+{txt}       Total {c |} {res} 74367.9674     2,245  33.1260434   {txt}Root MSE        =   {res} 5.7181
+
+{txt}{hline 14}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         wage{col 15}{c |} Coefficient{col 27}  Std. err.{col 39}      t{col 47}   P>|t|{col 55}     [95% con{col 68}f. interval]
+{hline 14}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}race {c |}
+{space 7}Black  {c |}{col 15}{res}{space 2}-1.493426{col 27}{space 2} .2855528{col 38}{space 1}   -5.23{col 47}{space 3}0.000{col 55}{space 4}-2.053401{col 68}{space 3}-.9334502
+{txt}{space 7}Other  {c |}{col 15}{res}{space 2} .4222659{col 27}{space 2} 1.130351{col 38}{space 1}    0.37{col 47}{space 3}0.709{col 55}{space 4}-1.794378{col 68}{space 3}  2.63891
+{txt}{space 13} {c |}
+{space 7}c_city {c |}
+Central city  {c |}{col 15}{res}{space 2} .9463844{col 27}{space 2} .2748678{col 38}{space 1}    3.44{col 47}{space 3}0.001{col 55}{space 4} .4073624{col 68}{space 3} 1.485406
+{txt}{space 8}_cons {c |}{col 15}{res}{space 2}  7.87372{col 27}{space 2} .1538436{col 38}{space 1}   51.18{col 47}{space 3}0.000{col 55}{space 4} 7.572029{col 68}{space 3}  8.17541
+{txt}{hline 14}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. reg wage i.race i.c_city i.race#i.c_city
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     2,246
+{txt}{hline 13}{c +}{hline 34}   F(5, 2240)      = {res}     6.52
+{txt}       Model {c |} {res} 1067.49773         5  213.499545   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 73300.4697     2,240   32.723424   {txt}R-squared       ={res}    0.0144
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0122
+{txt}       Total {c |} {res} 74367.9674     2,245  33.1260434   {txt}Root MSE        =   {res} 5.7204
+
+{txt}{hline 20}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}               wage{col 21}{c |} Coefficient{col 33}  Std. err.{col 45}      t{col 53}   P>|t|{col 61}     [95% con{col 74}f. interval]
+{hline 20}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 15}race {c |}
+{space 13}Black  {c |}{col 21}{res}{space 2}-1.578296{col 33}{space 2}  .368572{col 44}{space 1}   -4.28{col 53}{space 3}0.000{col 61}{space 4}-2.301074{col 74}{space 3}-.8555175
+{txt}{space 13}Other  {c |}{col 21}{res}{space 2} .3906818{col 33}{space 2} 1.322101{col 44}{space 1}    0.30{col 53}{space 3}0.768{col 61}{space 4}-2.201989{col 74}{space 3} 2.983353
+{txt}{space 19} {c |}
+{space 13}c_city {c |}
+{space 6}Central city  {c |}{col 21}{res}{space 2} .8730346{col 33}{space 2} .3406782{col 44}{space 1}    2.56{col 53}{space 3}0.010{col 61}{space 4} .2049566{col 74}{space 3} 1.541113
+{txt}{space 19} {c |}
+{space 8}race#c_city {c |}
+Black#Central city  {c |}{col 21}{res}{space 2} .2132897{col 33}{space 2} .5836601{col 44}{space 1}    0.37{col 53}{space 3}0.715{col 61}{space 4}-.9312815{col 74}{space 3} 1.357861
+{txt}Other#Central city  {c |}{col 21}{res}{space 2} .1304153{col 33}{space 2} 2.552082{col 44}{space 1}    0.05{col 53}{space 3}0.959{col 61}{space 4}-4.874278{col 74}{space 3} 5.135108
+{txt}{space 19} {c |}
+{space 14}_cons {c |}{col 21}{res}{space 2}  7.88994{col 33}{space 2} .1602043{col 44}{space 1}   49.25{col 53}{space 3}0.000{col 61}{space 4} 7.575775{col 74}{space 3} 8.204104
+{txt}{hline 20}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. br
+
+. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\REET CHOPRA\OneDrive\Desktop\Stata_Assignments\Task_2.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}31 Aug 2025, 01:17:34
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

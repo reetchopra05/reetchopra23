@@ -1,0 +1,162 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\REET CHOPRA\OneDrive\Desktop\Stata17\Stata_Assignments\Task_7.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res} 3 Dec 2025, 20:59:21
+
+{com}. sysuse nlsw88
+{txt}(NLSW, 1988 extract)
+
+{com}. tab race
+
+       {txt}Race {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+      White {c |}{res}      1,637       72.89       72.89
+{txt}      Black {c |}{res}        583       25.96       98.84
+{txt}      Other {c |}{res}         26        1.16      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}      2,246      100.00
+
+{com}. drop if race==3
+{txt}(26 observations deleted)
+
+{com}. br
+
+. tab race
+
+       {txt}Race {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+      White {c |}{res}      1,637       73.74       73.74
+{txt}      Black {c |}{res}        583       26.26      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}      2,220      100.00
+
+{com}. ttest wage, by(race)
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. err.{col 47}Std. dev.{col 59}[95% conf. interval]
+{hline 9}{c +}{hline 68}
+   White {c |}{res}{col 12}  1,637{col 22} 8.082999{col 34} .1471846{col 46} 5.955069{col 58} 7.794309{col 70}  8.37169
+   {txt}Black {c |}{res}{col 12}    583{col 22} 6.844558{col 34} .2102342{col 46} 5.076187{col 58} 6.431648{col 70} 7.257468
+{txt}{hline 9}{c +}{hline 68}
+Combined {c |}{res}{col 12}  2,220{col 22} 7.757769{col 34} .1222926{col 46} 5.762044{col 58} 7.517949{col 70} 7.997589
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} 1.238442{col 34} .2767198{col 58} .6957847{col 70} 1.781099
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}White{txt}) - mean({res}Black{txt})                              t = {res}  4.4754
+{txt}H0: diff = 0                                     Degrees of freedom = {res}    2218
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}1.0000         {txt}Pr(|T| > |t|) = {res}0.0000          {txt}Pr(T > t) = {res}0.0000
+
+{com}. describe
+
+{txt}Contains data from {res}C:\Users\REET CHOPRA\OneDrive\Desktop\Stata17\ado\base/n/nlsw88.dta
+{txt} Observations:{res}         2,220                  NLSW, 1988 extract
+{txt}    Variables:{res}            18                  31 Aug 2025 01:05
+                                              (_dta has notes)
+{txt}{hline}
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+{hline}
+{p 0 48}{res}{bind:idcode         }{txt}{bind: int     }{bind:{txt}%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}NLS ID{p_end}
+{p 0 48}{bind:age            }{txt}{bind: byte    }{bind:{txt}%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Age in current year{p_end}
+{p 0 48}{bind:race           }{txt}{bind: byte    }{bind:{txt}%8.0g     }{space 1}{bind:racelbl  }{bind:  }{res}{res}Race{p_end}
+{p 0 48}{bind:married        }{txt}{bind: byte    }{bind:{txt}%8.0g     }{space 1}{bind:marlbl   }{bind:  }{res}{res}Married{p_end}
+{p 0 48}{bind:never_married  }{txt}{bind: byte    }{bind:{txt}%16.0g    }{space 1}{bind:nev_mar  }{bind:  }{res}{res}Never married{p_end}
+{p 0 48}{bind:grade          }{txt}{bind: byte    }{bind:{txt}%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Current grade completed{p_end}
+{p 0 48}{bind:collgrad       }{txt}{bind: byte    }{bind:{txt}%16.0g    }{space 1}{bind:gradlbl  }{bind:  }{res}{res}College graduate{p_end}
+{p 0 48}{bind:south          }{txt}{bind: byte    }{bind:{txt}%9.0g     }{space 1}{bind:southlbl }{bind:  }{res}{res}Lives in the south{p_end}
+{p 0 48}{bind:smsa           }{txt}{bind: byte    }{bind:{txt}%9.0g     }{space 1}{bind:smsalbl  }{bind:  }{res}{res}Lives in SMSA{p_end}
+{p 0 48}{bind:c_city         }{txt}{bind: byte    }{bind:{txt}%16.0g    }{space 1}{bind:ccitylbl }{bind:  }{res}{res}Lives in a central city{p_end}
+{p 0 48}{bind:industry       }{txt}{bind: byte    }{bind:{txt}%23.0g    }{space 1}{bind:indlbl   }{bind:  }{res}{res}Industry{p_end}
+{p 0 48}{bind:occupation     }{txt}{bind: byte    }{bind:{txt}%22.0g    }{space 1}{bind:occlbl   }{bind:  }{res}{res}Occupation{p_end}
+{p 0 48}{bind:union          }{txt}{bind: byte    }{bind:{txt}%8.0g     }{space 1}{bind:unionlbl }{bind:  }{res}{res}Union worker{p_end}
+{p 0 48}{bind:wage           }{txt}{bind: float   }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}Hourly wage{p_end}
+{p 0 48}{bind:hours          }{txt}{bind: byte    }{bind:{txt}%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Usual hours worked{p_end}
+{p 0 48}{bind:ttl_exp        }{txt}{bind: float   }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}Total work experience (years){p_end}
+{p 0 48}{bind:tenure         }{txt}{bind: float   }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}Job tenure (years){p_end}
+{p 0 48}{bind:race1          }{txt}{bind: float   }{bind:{txt}%9.0g     }{space 1}{bind:today    }{bind:  }{res}{res}{p_end}
+{txt}{hline}
+Sorted by: {res}idcode
+     Note: Dataset has changed since last saved.
+
+{com}. ttest ttl_exp, by(race)
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. err.{col 47}Std. dev.{col 59}[95% conf. interval]
+{hline 9}{c +}{hline 68}
+   White {c |}{res}{col 12}  1,637{col 22} 12.46854{col 34} .1141757{col 46} 4.619532{col 58}  12.2446{col 70} 12.69249
+   {txt}Black {c |}{res}{col 12}    583{col 22} 12.71867{col 34} .1879675{col 46}  4.53855{col 58}  12.3495{col 70} 13.08785
+{txt}{hline 9}{c +}{hline 68}
+Combined {c |}{res}{col 12}  2,220{col 22} 12.53423{col 34}  .097602{col 46} 4.598702{col 58} 12.34283{col 70} 12.72563
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-.2501305{col 34} .2217821{col 58}-.6850529{col 70} .1847918
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}White{txt}) - mean({res}Black{txt})                              t = {res} -1.1278
+{txt}H0: diff = 0                                     Degrees of freedom = {res}    2218
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.1298         {txt}Pr(|T| > |t|) = {res}0.2595          {txt}Pr(T > t) = {res}0.8702
+
+{com}. mean ttl_exp
+{res}
+{txt}Mean estimation{col 42}{lalign 13:Number of obs}{col 55} = {res}{ralign 5:2,220}
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 14}{hline 12}
+{col 14}{c |}       Mean{col 26}   Std. err.{col 38}     [95% con{col 51}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 14}{hline 12}
+{space 5}ttl_exp {c |}{col 14}{res}{space 2} 12.53423{col 26}{space 2}  .097602{col 37}{space 5} 12.34283{col 51}{space 3} 12.72563
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 14}{hline 12}
+
+{com}. db ttest
+
+. ttest wage, by(race)
+
+{txt}Two-sample t test with equal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. err.{col 47}Std. dev.{col 59}[95% conf. interval]
+{hline 9}{c +}{hline 68}
+   White {c |}{res}{col 12}  1,637{col 22} 8.082999{col 34} .1471846{col 46} 5.955069{col 58} 7.794309{col 70}  8.37169
+   {txt}Black {c |}{res}{col 12}    583{col 22} 6.844558{col 34} .2102342{col 46} 5.076187{col 58} 6.431648{col 70} 7.257468
+{txt}{hline 9}{c +}{hline 68}
+Combined {c |}{res}{col 12}  2,220{col 22} 7.757769{col 34} .1222926{col 46} 5.762044{col 58} 7.517949{col 70} 7.997589
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22} 1.238442{col 34} .2767198{col 58} .6957847{col 70} 1.781099
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}White{txt}) - mean({res}Black{txt})                              t = {res}  4.4754
+{txt}H0: diff = 0                                     Degrees of freedom = {res}    2218
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}1.0000         {txt}Pr(|T| > |t|) = {res}0.0000          {txt}Pr(T > t) = {res}0.0000
+
+{com}. db reg
+
+. regress race ttl_exp wage
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     2,220
+{txt}{hline 13}{c +}{hline 34}   F(2, 2217)      = {res}    12.93
+{txt}       Model {c |} {res}   4.955994         2    2.477997   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 424.940853     2,217  .191673817   {txt}R-squared       ={res}    0.0115
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0106
+{txt}       Total {c |} {res} 429.896847     2,219  .193734496   {txt}Root MSE        =   {res} .43781
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        race{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 5}ttl_exp {c |}{col 14}{res}{space 2}   .00504{col 26}{space 2} .0020957{col 37}{space 1}    2.40{col 46}{space 3}0.016{col 54}{space 4} .0009303{col 67}{space 3} .0091497
+{txt}{space 8}wage {c |}{col 14}{res}{space 2}-.0082908{col 26}{space 2} .0016726{col 37}{space 1}   -4.96{col 46}{space 3}0.000{col 54}{space 4}-.0115708{col 67}{space 3}-.0050108
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 1.263758{col 26}{space 2} .0276467{col 37}{space 1}   45.71{col 46}{space 3}0.000{col 54}{space 4} 1.209542{col 67}{space 3} 1.317975
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\REET CHOPRA\OneDrive\Desktop\Stata17\Stata_Assignments\Task_7.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res} 3 Dec 2025, 21:04:25
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

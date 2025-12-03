@@ -1,0 +1,58 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\REET CHOPRA\OneDrive\Desktop\Stata_Assignments\Task_4.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res} 2 Sep 2025, 23:13:27
+
+{com}. edit
+
+. {txt}*(1 variable, 0 observation pasted into data editor)
+{com}
+. clear
+
+. edit
+
+. {txt}*(3 variables, 34 observations pasted into data editor)
+{com}
+. split seriesname, p(" ")
+{res}variables created as string: 
+{txt}{col 1}seriesname1{col 14}seriesname2
+
+{com}. edit
+
+. destring seriesname, replace
+{txt}seriesname: contains nonnumeric characters; no {res}replace
+
+{com}. br
+
+. destring seriesname1, replace
+{txt}seriesname1: all characters numeric; {res}replaced {txt}as {res}int
+
+{com}. br
+
+. tsset seriesname1
+{res}
+{p 0 15 2}{txt:Time variable: }{res:seriesname1}{txt:, }{res:{bind:1990}}{txt: to }{res:{bind:2023}}{p_end}
+{txt}{col 9}Delta: {res}1 unit
+
+{com}. tsline gdpgrowthannual
+{res}
+{com}. tsline gdpgrowthannual gdpcurrentus
+{res}
+{com}. twoway (tsline gdpgrowthannual) (tsline gdpcurrentus, y axis(2))
+{err}option {bf:y} not allowed
+{txt}{search r(198), local:r(198);}
+
+{com}. twoway (tsline gdpgrowthannual) (tsline gdpcurrentus, yaxis(2))
+{res}
+{com}. br
+
+. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\REET CHOPRA\OneDrive\Desktop\Stata_Assignments\Task_4.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res} 2 Sep 2025, 23:18:45
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}
