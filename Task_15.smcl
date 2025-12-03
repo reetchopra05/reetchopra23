@@ -1,97 +1,25 @@
-{smcl}
-{com}{sf}{ul off}{txt}{.-}
-      name:  {res}<unnamed>
-       {txt}log:  {res}C:\Users\REET CHOPRA\OneDrive\Desktop\Stata17\Stata_Assignments\Task_15.smcl
-  {txt}log type:  {res}smcl
- {txt}opened on:  {res} 4 Dec 2025, 00:17:37
-
-{com}. sysuse auto
-{txt}(1978 automobile data)
-
-{com}. describe
-
-{txt}Contains data from {res}C:\Users\REET CHOPRA\OneDrive\Desktop\Stata17\ado\base/a/auto.dta
-{txt} Observations:{res}            74                  1978 automobile data
-{txt}    Variables:{res}            12                  13 Apr 2020 17:45
-                                              (_dta has notes)
-{txt}{hline}
-Variable      Storage   Display    Value
-    name         type    format    label      Variable label
-{hline}
-{p 0 48}{res}{bind:make           }{txt}{bind: str18   }{bind:{txt}%-18s     }{space 1}{bind:         }{bind:  }{res}{res}Make and model{p_end}
-{p 0 48}{bind:price          }{txt}{bind: int     }{bind:{txt}%8.0gc    }{space 1}{bind:         }{bind:  }{res}{res}Price{p_end}
-{p 0 48}{bind:mpg            }{txt}{bind: int     }{bind:{txt}%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Mileage (mpg){p_end}
-{p 0 48}{bind:rep78          }{txt}{bind: int     }{bind:{txt}%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Repair record 1978{p_end}
-{p 0 48}{bind:headroom       }{txt}{bind: float   }{bind:{txt}%6.1f     }{space 1}{bind:         }{bind:  }{res}{res}Headroom (in.){p_end}
-{p 0 48}{bind:trunk          }{txt}{bind: int     }{bind:{txt}%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Trunk space (cu. ft.){p_end}
-{p 0 48}{bind:weight         }{txt}{bind: int     }{bind:{txt}%8.0gc    }{space 1}{bind:         }{bind:  }{res}{res}Weight (lbs.){p_end}
-{p 0 48}{bind:length         }{txt}{bind: int     }{bind:{txt}%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Length (in.){p_end}
-{p 0 48}{bind:turn           }{txt}{bind: int     }{bind:{txt}%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Turn circle (ft.){p_end}
-{p 0 48}{bind:displacement   }{txt}{bind: int     }{bind:{txt}%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Displacement (cu. in.){p_end}
-{p 0 48}{bind:gear_ratio     }{txt}{bind: float   }{bind:{txt}%6.2f     }{space 1}{bind:         }{bind:  }{res}{res}Gear ratio{p_end}
-{p 0 48}{bind:foreign        }{txt}{bind: byte    }{bind:{txt}%8.0g     }{space 1}{bind:origin   }{bind:  }{res}{res}Car origin{p_end}
-{txt}{hline}
-Sorted by: {res}foreign
-
-{com}. twoway (scatter price mpg,col(red))
-{res}
-{com}. graph save grp1
-{res}{txt}file {bf:grp1.gph} saved
-
-{com}. twoway (scatter price length, col(blue))
-{res}
-{com}. graph save grp2
-{res}{txt}file {bf:grp2.gph} saved
-
-{com}. twoway (scatter price headroom, col(green))
-{res}
-{com}. graph save grp3
-{res}{txt}file {bf:grp3.gph} saved
-
-{com}. twoway (scatter price weight, col(brown))
-{res}
-{com}. graph save grp4
-{res}{txt}file {bf:grp4.gph} saved
-
-{com}. twoway (scatter price trunk, col(pink))
-{res}
-{com}. graph save grp5
-{res}{txt}file {bf:grp5.gph} saved
-
-{com}. twoway (scatter price turn, col(black))
-{res}
-{com}. graph save grp6
-{res}{txt}file {bf:grp6.gph} saved
-
-{com}. graph combine grp1.gph grp2.gph grp3.gph grp4.gph grp5.gph grp6.gph
-{res}
-{com}. graph combine grp1.gph grp2.gph grp3.gph grp4.gph grp5.gph grp6.gph, row(3)
-{res}
-{com}. graph save grp7
-{res}{txt}file {bf:grp7.gph} saved
-
-{com}. graph combine grp1.gph grp2.gph grp3.gph grp4.gph grp5.gph grp6.gph, scheme(economist)
-{res}
-{com}. graph save grp8
-{res}{txt}file {bf:grp8.gph} saved
-
-{com}. twoway (scatter price mpg, col(red)), scheme (economist)
-{res}
-{com}. twoway (scatter price length, col(blue)), scheme (economist)
-{res}
-{com}. twoway (scatter price headroom, col(green)), scheme (economist)
-{res}
-{com}. twoway (scatter price weight, col(brown)), scheme (economist)
-{res}
-{com}. twoway (scatter price trunk, col(pink)), scheme (economist)
-{res}
-{com}. twoway (scatter price turn, col(black)), scheme (economist)
-{res}
-{com}. log close
-      {txt}name:  {res}<unnamed>
-       {txt}log:  {res}C:\Users\REET CHOPRA\OneDrive\Desktop\Stata17\Stata_Assignments\Task_15.smcl
-  {txt}log type:  {res}smcl
- {txt}closed on:  {res} 4 Dec 2025, 00:32:07
-{txt}{.-}
-{smcl}
-{txt}{sf}{ul off}
+sysuse auto
+describe
+twoway (scatter price mpg,col(red))
+graph save grp1
+twoway (scatter price length, col(blue))
+graph save grp2
+twoway (scatter price headroom, col(green))
+graph save grp3
+twoway (scatter price weight, col(brown))
+graph save grp4
+twoway (scatter price trunk, col(pink))
+graph save grp5
+twoway (scatter price turn, col(black))
+graph save grp6
+graph combine grp1.gph grp2.gph grp3.gph grp4.gph grp5.gph grp6.gph
+graph combine grp1.gph grp2.gph grp3.gph grp4.gph grp5.gph grp6.gph, row(3)
+graph save grp7
+graph combine grp1.gph grp2.gph grp3.gph grp4.gph grp5.gph grp6.gph, scheme(economist)
+graph save grp8
+twoway (scatter price mpg, col(red)), scheme (economist)
+twoway (scatter price length, col(blue)), scheme (economist)
+twoway (scatter price headroom, col(green)), scheme (economist)
+twoway (scatter price weight, col(brown)), scheme (economist)
+twoway (scatter price trunk, col(pink)), scheme (economist)
+twoway (scatter price turn, col(black)), scheme (economist)
