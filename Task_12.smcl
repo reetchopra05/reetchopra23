@@ -1,32 +1,8 @@
-{smcl}
-{com}{sf}{ul off}{txt}{.-}
-      name:  {res}<unnamed>
-       {txt}log:  {res}C:\Users\REET CHOPRA\OneDrive\Desktop\Stata17\Stata_Assignments\Task_12.smcl
-  {txt}log type:  {res}smcl
- {txt}opened on:  {res} 3 Dec 2025, 23:06:09
-
-{com}. sysuse auto
-{txt}(1978 automobile data)
-
-{com}. twoway (scatter price mpg)
-{res}
-{com}. twoway (scatter price mpg) (line price mpg)
-{res}
-{com}. twoway (scatter price mpg, mcolor (red))
-{res}
-{com}. twoway (scatter price mpg, mcolor (red) mlabel (foreign))
-{res}
-{com}. twoway (scatter price mpg, mcolor (red) mlabel (foreign) msymbol(square))
-{res}
-{com}. twoway (scatter price mpg, mcolor (red) mlabel (foreign) mlabsize(tiny))
-{res}
-{com}. twoway (scatter price mpg, mcolor (red) mlabel (foreign) mlabsize(tiny) mlabpos(9))
-{res}
-{com}. log close
-      {txt}name:  {res}<unnamed>
-       {txt}log:  {res}C:\Users\REET CHOPRA\OneDrive\Desktop\Stata17\Stata_Assignments\Task_12.smcl
-  {txt}log type:  {res}smcl
- {txt}closed on:  {res} 3 Dec 2025, 23:10:59
-{txt}{.-}
-{smcl}
-{txt}{sf}{ul off}
+sysuse auto
+twoway (scatter price mpg)
+twoway (scatter price mpg) (line price mpg)
+twoway (scatter price mpg, mcolor (red))
+twoway (scatter price mpg, mcolor (red) mlabel (foreign))
+twoway (scatter price mpg, mcolor (red) mlabel (foreign) msymbol(square))
+twoway (scatter price mpg, mcolor (red) mlabel (foreign) mlabsize(tiny))
+twoway (scatter price mpg, mcolor (red) mlabel (foreign) mlabsize(tiny) mlabpos(9))
