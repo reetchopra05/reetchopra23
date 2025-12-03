@@ -1,112 +1,30 @@
-{smcl}
-{com}{sf}{ul off}{txt}{.-}
-      name:  {res}<unnamed>
-       {txt}log:  {res}C:\Users\REET CHOPRA\OneDrive\Desktop\Stata17\Stata_Assignments\Task_11.smcl
-  {txt}log type:  {res}smcl
- {txt}opened on:  {res} 3 Dec 2025, 22:57:01
-
-{com}. sysuse nlsw88
-{txt}(NLSW, 1988 extract)
-
-{com}. tab race
-
-       {txt}Race {c |}      Freq.     Percent        Cum.
-{hline 12}{c +}{hline 35}
-      White {c |}{res}      1,637       72.89       72.89
-{txt}      Black {c |}{res}        583       25.96       98.84
-{txt}      Other {c |}{res}         26        1.16      100.00
-{txt}{hline 12}{c +}{hline 35}
-      Total {c |}{res}      2,246      100.00
-
-{com}. tab race, nolabel
-
-       {txt}Race {c |}      Freq.     Percent        Cum.
-{hline 12}{c +}{hline 35}
-          1 {c |}{res}      1,637       72.89       72.89
-{txt}          2 {c |}{res}        583       25.96       98.84
-{txt}          3 {c |}{res}         26        1.16      100.00
-{txt}{hline 12}{c +}{hline 35}
-      Total {c |}{res}      2,246      100.00
-
-{com}. gen white=1 if race==1
-{txt}(609 missing values generated)
-
-{com}. br
-
-. br race white
-
-. replace white=0 if race==3
-{txt}(26 real changes made)
-
-{com}. br
-
-. replace white=0 if race==2
-{txt}(583 real changes made)
-
-{com}. drop white
-
-. gen white=1 if race==1
-{txt}(609 missing values generated)
-
-{com}. replace white=0 if white==1
-{txt}(1,637 real changes made)
-
-{com}. br
-
-. br race white
-
-. gen black =0 if race==2
-{txt}(1,663 missing values generated)
-
-{com}. br
-
-. replace black =0 if black==0
-{txt}(0 real changes made)
-
-{com}. tab white
-
-      {txt}white {c |}      Freq.     Percent        Cum.
-{hline 12}{c +}{hline 35}
-          0 {c |}{res}      1,637      100.00      100.00
-{txt}{hline 12}{c +}{hline 35}
-      Total {c |}{res}      1,637      100.00
-
-{com}. tab black
-
-      {txt}black {c |}      Freq.     Percent        Cum.
-{hline 12}{c +}{hline 35}
-          0 {c |}{res}        583      100.00      100.00
-{txt}{hline 12}{c +}{hline 35}
-      Total {c |}{res}        583      100.00
-
-{com}. gen new=age+race
-
-. br
-
-. egen new1=mean(age)
-
-. br age new1
-
-. egen new2=max(age)
-
-. br age new2
-
-. br age white
-
-. bys white:egen mean_age=mean age
-{txt}{search r(198), local:r(198);}
-
-{com}. bys white:egen mean_age=mean(age)
-
-. br
-
-. br age white mean_age
-
-. log close
-      {txt}name:  {res}<unnamed>
-       {txt}log:  {res}C:\Users\REET CHOPRA\OneDrive\Desktop\Stata17\Stata_Assignments\Task_11.smcl
-  {txt}log type:  {res}smcl
- {txt}closed on:  {res} 3 Dec 2025, 23:04:20
-{txt}{.-}
-{smcl}
-{txt}{sf}{ul off}
+sysuse nlsw88
+tab race
+tab race, nolabel
+gen white=1 if race==1
+br
+br race white
+replace white=0 if race==3
+br
+replace white=0 if race==2
+drop white
+gen white=1 if race==1
+replace white=0 if white==1
+br
+br race white
+gen black =0 if race==2
+br
+replace black =0 if black==0
+tab white
+tab black
+gen new=age+race
+br
+egen new1=mean(age)
+br age new1
+egen new2=max(age)
+br age new2
+br age white
+bys white:egen mean_age=mean age
+bys white:egen mean_age=mean(age)
+br
+br age white mean_age
