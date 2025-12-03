@@ -1,92 +1,19 @@
-{smcl}
-{com}{sf}{ul off}{txt}{.-}
-      name:  {res}<unnamed>
-       {txt}log:  {res}C:\Users\REET CHOPRA\OneDrive\Desktop\Stata_Assignments\Task_1.smcl
-  {txt}log type:  {res}smcl
- {txt}opened on:  {res}31 Aug 2025, 00:58:49
-
-{com}. sysuse nlsw88
-{txt}(NLSW, 1988 extract)
-
-{com}. br
-
-. tab race
-
-       {txt}Race {c |}      Freq.     Percent        Cum.
-{hline 12}{c +}{hline 35}
-      White {c |}{res}      1,637       72.89       72.89
-{txt}      Black {c |}{res}        583       25.96       98.84
-{txt}      Other {c |}{res}         26        1.16      100.00
-{txt}{hline 12}{c +}{hline 35}
-      Total {c |}{res}      2,246      100.00
-
-{com}. tab race, nolabel
-
-       {txt}Race {c |}      Freq.     Percent        Cum.
-{hline 12}{c +}{hline 35}
-          1 {c |}{res}      1,637       72.89       72.89
-{txt}          2 {c |}{res}        583       25.96       98.84
-{txt}          3 {c |}{res}         26        1.16      100.00
-{txt}{hline 12}{c +}{hline 35}
-      Total {c |}{res}      2,246      100.00
-
-{com}. gen race1=0 if race==1
-{txt}(609 missing values generated)
-
-{com}. br
-
-. replace race1=1 if race==1
-{txt}(1,637 real changes made)
-
-{com}. br
-
-. replace race1=0 if race==2
-{txt}(583 real changes made)
-
-{com}. br
-
-. raplce race1=0 if race==3
-{err}command {bf}raplce{sf} is unrecognized
-{txt}{search r(199), local:r(199);}
-
-{com}. replace race1=0 if race==3
-{txt}(26 real changes made)
-
-{com}. edit
-
-. br
-
-. label define today 1 "white" 0 "colour"
-
-. label value race1 today
-
-. tab race1
-
-      {txt}race1 {c |}      Freq.     Percent        Cum.
-{hline 12}{c +}{hline 35}
-     colour {c |}{res}        609       27.11       27.11
-{txt}      white {c |}{res}      1,637       72.89      100.00
-{txt}{hline 12}{c +}{hline 35}
-      Total {c |}{res}      2,246      100.00
-
-{com}. tab race1, nolebel
-{err}option {bf:nolebel} not allowed
-{txt}{search r(198), local:r(198);}
-
-{com}. tab race1, nolabel
-
-      {txt}race1 {c |}      Freq.     Percent        Cum.
-{hline 12}{c +}{hline 35}
-          0 {c |}{res}        609       27.11       27.11
-{txt}          1 {c |}{res}      1,637       72.89      100.00
-{txt}{hline 12}{c +}{hline 35}
-      Total {c |}{res}      2,246      100.00
-
-{com}. log close
-      {txt}name:  {res}<unnamed>
-       {txt}log:  {res}C:\Users\REET CHOPRA\OneDrive\Desktop\Stata_Assignments\Task_1.smcl
-  {txt}log type:  {res}smcl
- {txt}closed on:  {res}31 Aug 2025, 01:05:04
-{txt}{.-}
-{smcl}
-{txt}{sf}{ul off}
+sysuse nlsw88
+br
+tab race
+tab race, nolabel
+gen race1=0 if race==1
+br
+replace race1=1 if race==1
+br
+replace race1=0 if race==2
+br
+raplce race1=0 if race==3
+replace race1=0 if race==3
+edit
+br
+label define today 1 "white" 0 "colour"
+label value race1 today
+tab race1
+tab race1, nolebel
+tab race1, nolabel
